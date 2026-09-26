@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mohamed Althap S - Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Inter",sans-serif;background:#f0f2f5;display:flex;flex-direction:column;align-items:center;padding:30px 15px;gap:24px}
+
+/* PRINT BUTTON */
+.print-btn{position:fixed;top:20px;right:20px;background:#1a1a2e;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-family:"Inter",sans-serif;font-size:.85rem;font-weight:600;letter-spacing:1px;cursor:pointer;z-index:9999;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:.3s}
+.print-btn:hover{background:#e63946;transform:translateY(-2px)}
+
+/* A4 PAGE */
+.page{width:210mm;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.15);display:grid;grid-template-columns:68mm 1fr;border-radius:4px;page-break-after:always;overflow:hidden}
+.page:last-child{page-break-after:auto}
+
+/* LEFT SIDEBAR */
+.sidebar{background:#1a1a2e;color:#fff;display:flex;flex-direction:column}
+.sb-top{background:#e63946;padding:28px 22px 24px;text-align:center}
+.sb-photo{width:95px;height:95px;border-radius:50%;border:4px solid rgba(255,255,255,.3);object-fit:cover;object-position:top center;display:block;margin:0 auto 14px}
+.sb-name{font-family:"Poppins",sans-serif;font-size:1.05rem;font-weight:700;color:#fff;line-height:1.3;letter-spacing:.5px}
+.sb-title{font-size:.65rem;color:rgba(255,255,255,.8);letter-spacing:2.5px;margin-top:5px;font-weight:500}
+.sb-body{padding:20px 18px;flex:1}
+.sb-section{margin-bottom:18px}
+.sb-section-title{font-size:.6rem;font-weight:700;letter-spacing:3px;color:#e63946;text-transform:uppercase;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.1)}
+.contact-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:.7rem;color:rgba(255,255,255,.75);line-height:1.5}
+.contact-item i{color:#e63946;min-width:13px;margin-top:2px;font-size:.72rem}
+.contact-item a{color:rgba(255,255,255,.75);text-decoration:none;word-break:break-all}
+.contact-item a:hover{color:#e63946}
+
+.skill-item{margin-bottom:9px}
+.skill-name{font-size:.68rem;color:rgba(255,255,255,.85);margin-bottom:3px;display:flex;justify-content:space-between}
+.skill-pct{color:#e63946;font-size:.63rem}
+.skill-bar{height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,#e63946,#ff6b6b);border-radius:2px}
+
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.3);color:rgba(255,255,255,.8);padding:2px 7px;border-radius:3px;font-size:.61rem;font-weight:500}
+
+.domain-chip{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:.68rem;color:rgba(255,255,255,.75)}
+.domain-chip::before{content:"";width:5px;height:5px;border-radius:50%;background:#e63946;flex-shrink:0}
+
+/* RIGHT MAIN */
+.main{padding:28px 24px;background:#fff}
+.main-header{margin-bottom:18px;border-bottom:3px solid #e63946;padding-bottom:14px}
+.main-name{font-family:"Poppins",sans-serif;font-size:1.9rem;font-weight:800;color:#1a1a2e;letter-spacing:1px;line-height:1}
+.main-sub{font-size:.75rem;color:#6b7280;letter-spacing:2px;margin-top:5px;font-weight:500}
+.obj-text{font-size:.75rem;color:#374151;line-height:1.8;margin-top:9px}
+.obj-text strong{color:#e63946}
+
+/* SECTION */
+.section{margin-bottom:16px}
+.section-title{display:flex;align-items:center;gap:7px;font-family:"Poppins",sans-serif;font-size:.74rem;font-weight:700;color:#1a1a2e;letter-spacing:2px;text-transform:uppercase;margin-bottom:11px}
+.section-title i{color:#e63946;font-size:.8rem;width:16px}
+.section-title::after{content:"";flex:1;height:1.5px;background:linear-gradient(90deg,#e63946 0%,rgba(230,57,70,.1) 100%);margin-left:7px}
+
+/* EDUCATION */
+.edu-item{margin-bottom:10px;padding-left:10px;border-left:3px solid #e63946}
+.edu-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.edu-deg{font-size:.76rem;font-weight:700;color:#1a1a2e}
+.edu-yr{font-size:.64rem;color:#e63946;font-weight:600;white-space:nowrap;background:#fef2f2;padding:1px 7px;border-radius:20px}
+.edu-col{font-size:.69rem;color:#6b7280;margin-top:1px}
+.edu-grade{font-size:.67rem;color:#374151;font-weight:600;margin-top:1px}
+
+/* PROJECTS */
+.proj-item{margin-bottom:10px;padding:9px 12px;border:1px solid #f3f4f6;border-radius:7px;border-left:3px solid #e63946}
+.proj-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px}
+.proj-title{font-size:.74rem;font-weight:700;color:#1a1a2e}
+.proj-tags{display:flex;flex-wrap:wrap;gap:3px}
+.proj-tag{background:#fef2f2;color:#e63946;padding:1px 6px;border-radius:3px;font-size:.6rem;font-weight:600;border:1px solid #fecaca}
+.proj-desc{font-size:.68rem;color:#6b7280;line-height:1.7}
+
+/* CERTS - 3 column to save space */
+.cert-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.cert-item{padding:8px 9px;border:1px solid #f3f4f6;border-radius:6px;border-left:3px solid #e63946}
+.cert-name{font-size:.68rem;font-weight:700;color:#1a1a2e;line-height:1.35}
+.cert-org{font-size:.61rem;color:#e63946;font-weight:600;margin-top:2px}
+.cert-date{font-size:.58rem;color:#9ca3af;margin-top:1px}
+.cert-gold{border-left-color:#f59e0b;background:#fffbeb}
+.cert-gold .cert-org{color:#d97706}
+.cert-pega{border-left-color:#1f4e9e;background:#f0f4ff}
+.cert-pega .cert-org{color:#1f4e9e}
+
+/* SOFT SKILLS */
+.soft-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}
+.soft-item{display:flex;align-items:center;gap:6px;font-size:.68rem;color:#374151}
+.soft-item i{color:#e63946;font-size:.65rem;width:12px}
+
+/* INTERNSHIP */
+.intern-item{padding:9px 12px;border:1px solid #f3f4f6;border-radius:7px;border-left:3px solid #1a1a2e;margin-bottom:8px}
+.intern-head{display:flex;justify-content:space-between;align-items:flex-start}
+.intern-title{font-size:.74rem;font-weight:700;color:#1a1a2e}
+.intern-yr{font-size:.63rem;color:#6b7280;background:#f9fafb;padding:1px 7px;border-radius:20px;white-space:nowrap}
+.intern-org{font-size:.68rem;color:#e63946;font-weight:600;margin-top:1px}
+.intern-desc{font-size:.67rem;color:#6b7280;line-height:1.65;margin-top:3px}
+
+/* PAGE 2 SIDEBAR - continuation */
+.sb-cont{padding:20px 18px}
+.sb-cont-title{font-size:.6rem;font-weight:700;letter-spacing:3px;color:#e63946;text-transform:uppercase;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.1)}
+
+/* PRINT */
+@media print{
+  body{background:#fff;padding:0;gap:0}
+  .print-btn{display:none}
+  .page{box-shadow:none;border-radius:0;width:100%;height:297mm;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+}
+@page{size:A4;margin:0}
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()"><i class="fas fa-download"></i> DOWNLOAD / PRINT PDF</button>
+
+<!-- ========== PAGE 1 ========== -->
+<div class="page">
+  <!-- SIDEBAR P1 -->
+  <div class="sidebar">
+    <div class="sb-top">
+      <img src="passport.jpg" class="sb-photo" alt="Mohamed Althap S"/>
+      <div class="sb-name">Mohamed Althap S</div>
+      <div class="sb-title">FULL STACK DEV · AI · ECE</div>
+    </div>
+    <div class="sb-body">
+      <div class="sb-section">
+        <div class="sb-section-title">Contact</div>
+        <div class="contact-item"><i class="fas fa-phone"></i><span>+91 9345028014</span></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:mohamedalthafs230@gmail.com">mohamedalthafs230@gmail.com</a></div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/mohamedalthap-s-5685b9397/" target="_blank">Mohamed Althap S</a></div>
+        <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/althap-135" target="_blank">github.com/althap-135</a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Karur, Tamil Nadu</span></div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-section-title">Tech Skills</div>
+        <div class="skill-item"><div class="skill-name"><span>Python</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>JavaScript</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>HTML / CSS</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>C++</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Java</span><span class="skill-pct">65%</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-section-title">Tools</div>
+        <div class="tags"><span class="tag">VS Code</span><span class="tag">GitHub</span><span class="tag">Netlify</span><span class="tag">Arduino IDE</span><span class="tag">Git</span><span class="tag">WordPress</span></div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-section-title">Domains</div>
+        <div class="domain-chip">Artificial Intelligence</div>
+        <div class="domain-chip">Internet of Things</div>
+        <div class="domain-chip">Embedded Systems</div>
+        <div class="domain-chip">Full Stack Web Dev</div>
+        <div class="domain-chip">Database Management</div>
+        <div class="domain-chip">Natural Language Processing</div>
+        <div class="domain-chip">Workflow Automation</div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-section-title">Languages</div>
+        <div class="domain-chip">Tamil (Native)</div>
+        <div class="domain-chip">English (Professional)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN P1 -->
+  <div class="main">
+    <div class="main-header">
+      <div class="main-name">MOHAMED ALTHAP S</div>
+      <div class="main-sub">B.E. ELECTRONICS &amp; COMMUNICATION ENGINEERING</div>
+      <div class="obj-text">
+        Aspiring <strong>Full Stack Developer</strong> and ECE student passionate about building practical, user-focused applications. Proficient in <strong>Java, Python, C++, HTML, CSS,</strong> and AI-based technologies, with a strong interest in developing intelligent and scalable solutions. Eager to contribute technical skills to real-world projects and gain industry experience.
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-graduation-cap"></i>Education</div>
+      <div class="edu-item">
+        <div class="edu-head"><div class="edu-deg">B.E. Electronics &amp; Communication Engineering</div><div class="edu-yr">2024 – 2028</div></div>
+        <div class="edu-col">V.S.B Engineering College, Karur · Anna University</div>
+        <div class="edu-grade">Current CGPA: <strong style="color:#e63946">7.85 / 10.0</strong></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-head"><div class="edu-deg">Higher Secondary Certificate (HSC) — XII</div><div class="edu-yr">2024</div></div>
+        <div class="edu-col">Tamil Nadu State Board</div>
+        <div class="edu-grade">Percentage: <strong style="color:#e63946">72.3%</strong></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-head"><div class="edu-deg">Secondary School Leaving Certificate (SSLC) — X</div><div class="edu-yr">2022</div></div>
+        <div class="edu-col">Tamil Nadu State Board</div>
+        <div class="edu-grade">Percentage: <strong style="color:#e63946">55%</strong></div>
+      </div>
+    </div>
+
+    <!-- INTERNSHIPS -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-briefcase"></i>Internships</div>
+      <div class="intern-item">
+        <div class="intern-head">
+          <div><div class="intern-title">National Internship Program — Workflow Automation &amp; Low-Code</div><div class="intern-org">Pegasystems Worldwide India Pvt. Ltd · SmartBridge · AICTE · NASSCOM</div></div>
+          <div class="intern-yr">Aug–Sep 2026</div>
+        </div>
+        <div class="intern-desc">Completed <strong>60 hours</strong> of industry-integrated learning covering workflow automation, low-code technologies and real-world project implementation. Certificate ID: <strong>PEGA-SW-NIP-2026-822</strong> · Issued: Sep 22, 2026.</div>
+      </div>
+      <div class="intern-item">
+        <div class="intern-head">
+          <div><div class="intern-title">Embedded Systems Intern</div><div class="intern-org">Power Integrated Solutions · MSME Certified · Trichy</div></div>
+          <div class="intern-yr">Jun–Jul 2026</div>
+        </div>
+        <div class="intern-desc">Hands-on offline internship in <strong>Embedded Systems</strong> — embedded hardware programming, circuit design, and system integration. Performance: <em>Good</em>. (MSME: UDYAM-TN-27)</div>
+      </div>
+      <div class="intern-item">
+        <div class="intern-head">
+          <div><div class="intern-title">Industrial Internship Trainee</div><div class="intern-org">BSNL — Bharat Sanchar Nigam Limited (Govt. of India)</div></div>
+          <div class="intern-yr">2025</div>
+        </div>
+        <div class="intern-desc">Exposure to telecommunications infrastructure, network systems, and digital communication technologies in a government enterprise environment.</div>
+      </div>
+    </div>
+
+    <!-- SOFT SKILLS -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-star"></i>Soft Skills</div>
+      <div class="soft-grid">
+        <div class="soft-item"><i class="fas fa-comments"></i>Communication</div>
+        <div class="soft-item"><i class="fas fa-crown"></i>Leadership</div>
+        <div class="soft-item"><i class="fas fa-users"></i>Teamwork</div>
+        <div class="soft-item"><i class="fas fa-sync"></i>Adaptability</div>
+        <div class="soft-item"><i class="fas fa-clock"></i>Time Management</div>
+        <div class="soft-item"><i class="fas fa-lightbulb"></i>Problem Solving</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 ========== -->
+<div class="page">
+  <!-- SIDEBAR P2 -->
+  <div class="sidebar">
+    <div style="padding:28px 18px 0">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:3px;color:#e63946;text-transform:uppercase;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.1)">Certifications Summary</div>
+      <div class="domain-chip">🥇 NASSCOM GOLD — IoT</div>
+      <div class="domain-chip">Infosys — NLP</div>
+      <div class="domain-chip">Simplilearn — AI Agents</div>
+      <div class="domain-chip">Unstop — HTML with AI</div>
+      <div class="domain-chip">Coursera — WordPress</div>
+      <div class="domain-chip">PEGA — Workflow Auto</div>
+      <div class="domain-chip">Power Integrated — Embedded</div>
+      <div class="domain-chip">BSNL Internship</div>
+      <div class="domain-chip">Paper Presentation</div>
+    </div>
+    <div style="padding:18px 18px 0">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:3px;color:#e63946;text-transform:uppercase;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.1)">GitHub Repos</div>
+      <div class="domain-chip">ai-studybot-assistant</div>
+      <div class="domain-chip">automated-attendance</div>
+      <div class="domain-chip">smart-hospital-appt</div>
+      <div class="domain-chip">Tracoder</div>
+      <div class="domain-chip">RetailIQ</div>
+      <div class="domain-chip">vyrion-ai</div>
+      <div class="domain-chip">portfolio</div>
+    </div>
+    <div style="padding:18px 18px 0">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:3px;color:#e63946;text-transform:uppercase;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.1)">Hobbies</div>
+      <div class="domain-chip">Learning New Technologies</div>
+      <div class="domain-chip">Ethical Hacking</div>
+      <div class="domain-chip">AI &amp; IoT Projects</div>
+      <div class="domain-chip">Web Development</div>
+      <div class="domain-chip">Tech Content</div>
+      <div class="domain-chip">Music</div>
+    </div>
+  </div>
+
+  <!-- MAIN P2 -->
+  <div class="main">
+
+    <!-- PROJECTS -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-code"></i>Projects</div>
+      <div class="proj-item">
+        <div class="proj-head"><div class="proj-title">Tracoder — LeetCode Student Progress Tracker</div><div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JS</span><span class="proj-tag">API</span></div></div>
+        <div class="proj-desc">Web application helping colleges track students' LeetCode coding performance. Students register with their LeetCode username; system fetches live statistics, displays rankings, analytics, and progress charts enabling faculty to monitor growth and encourage consistent coding practice.</div>
+      </div>
+      <div class="proj-item">
+        <div class="proj-head"><div class="proj-title">AI-Based Study Assistant &amp; Paragraph Analyzer</div><div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">AI</span><span class="proj-tag">NLP</span></div></div>
+        <div class="proj-desc">AI-powered platform that analyzes study materials, generates intelligent summaries, extracts key concepts, and enables interactive Q&amp;A for enhanced student learning experiences.</div>
+      </div>
+      <div class="proj-item">
+        <div class="proj-head"><div class="proj-title">Smart Attendance System for Rural Schools</div><div class="proj-tags"><span class="proj-tag">QR Code</span><span class="proj-tag">IoT</span><span class="proj-tag">Web</span></div></div>
+        <div class="proj-desc">Dynamic QR Code attendance system with time-based validation preventing proxy attendance, automated analytics dashboard, and real-time reporting for teachers and administrators.</div>
+      </div>
+      <div class="proj-item">
+        <div class="proj-head"><div class="proj-title">Smart Railway Gate Automation System</div><div class="proj-tags"><span class="proj-tag">Arduino</span><span class="proj-tag">Embedded</span><span class="proj-tag">IoT</span></div></div>
+        <div class="proj-desc">Arduino-based railway gate automation using train detection sensors, fingerprint authentication, and dual servo motors to improve railway crossing safety.</div>
+      </div>
+      <div class="proj-item">
+        <div class="proj-head"><div class="proj-title">Smart Hospital Appointment System</div><div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span></div></div>
+        <div class="proj-desc">Web-based hospital appointment booking platform with doctor scheduling, patient registration, and automated reminders for streamlined healthcare management.</div>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-certificate"></i>Certifications</div>
+      <div class="cert-grid">
+        <div class="cert-item cert-gold">
+          <div class="cert-name">IoT &amp; Digital Transformation</div>
+          <div class="cert-org">🥇 NASSCOM FutureSkills — GOLD</div>
+          <div class="cert-date">March 25, 2026</div>
+        </div>
+        <div class="cert-item cert-pega">
+          <div class="cert-name">National Internship Program</div>
+          <div class="cert-org">Pegasystems · SmartBridge · AICTE</div>
+          <div class="cert-date">Sep 22, 2026 · ID: PEGA-SW-NIP-2026-822</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Intro to Natural Language Processing</div>
+          <div class="cert-org">Infosys Springboard</div>
+          <div class="cert-date">January 23, 2026</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">AI Agents for Beginners</div>
+          <div class="cert-org">Simplilearn SkillUP</div>
+          <div class="cert-date">Jan 19, 2026 · Code: 9734480</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">HTML with AI</div>
+          <div class="cert-org">Unstop</div>
+          <div class="cert-date">Certificate of Completion</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Build a Website with WordPress</div>
+          <div class="cert-org">Coursera — Project Certificate</div>
+          <div class="cert-date">Jul 31, 2026 · T6BNTXNG3EKL</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Embedded Systems Internship</div>
+          <div class="cert-org">Power Integrated Solutions (MSME)</div>
+          <div class="cert-date">Jun 12 – Jul 08, 2026</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">BSNL Internship Program</div>
+          <div class="cert-org">BSNL (Govt. of India)</div>
+          <div class="cert-date">2025</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Technical Paper Presentation</div>
+          <div class="cert-org">V.S.B Engineering College</div>
+          <div class="cert-date">2025</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => {
+  document.querySelectorAll('.skill-fill').forEach(el => {
+    el.style.transition = 'width 1.5s ease';
+  });
+});
+</script>
+</body>
+</html>
